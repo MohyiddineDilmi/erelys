@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/air-borne/static/css/main.8fd3c5b8.css",
-    "main.js": "/air-borne/static/js/main.c116f0ef.js",
+    "main.css": "/air-borne/static/css/main.fe9e60ba.css",
+    "main.js": "/air-borne/static/js/main.0ad1cc47.js",
     "static/js/787.6edf6ebb.chunk.js": "/air-borne/static/js/787.6edf6ebb.chunk.js",
     "static/media/i-4.png": "/air-borne/static/media/i-4.1cdc9ee5b3b5d269a1f9.png",
     "static/media/i-3.png": "/air-borne/static/media/i-3.9d746070413f225b7207.png",
@@ -19,12 +19,12 @@
     "static/media/4k-icon.svg": "/air-borne/static/media/4k-icon.57695d3ae4bae07f320261c5a627b12b.svg",
     "static/media/stream-icon.svg": "/air-borne/static/media/stream-icon.3eb81281686c5136244778bdacc752c8.svg",
     "index.html": "/air-borne/index.html",
-    "main.8fd3c5b8.css.map": "/air-borne/static/css/main.8fd3c5b8.css.map",
-    "main.c116f0ef.js.map": "/air-borne/static/js/main.c116f0ef.js.map",
+    "main.fe9e60ba.css.map": "/air-borne/static/css/main.fe9e60ba.css.map",
+    "main.0ad1cc47.js.map": "/air-borne/static/js/main.0ad1cc47.js.map",
     "787.6edf6ebb.chunk.js.map": "/air-borne/static/js/787.6edf6ebb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8fd3c5b8.css",
-    "static/js/main.c116f0ef.js"
+    "static/css/main.fe9e60ba.css",
+    "static/js/main.0ad1cc47.js"
   ]
 }
