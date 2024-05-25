@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/air-borne/static/css/main.bd19e232.css",
-    "main.js": "/air-borne/static/js/main.eae71305.js",
+    "main.js": "/air-borne/static/js/main.662064fd.js",
     "static/js/453.83310e2b.chunk.js": "/air-borne/static/js/453.83310e2b.chunk.js",
     "static/media/i-4.png": "/air-borne/static/media/i-4.1cdc9ee5b3b5d269a1f9.png",
     "static/media/i-3.png": "/air-borne/static/media/i-3.9d746070413f225b7207.png",
@@ -20,11 +20,11 @@
     "static/media/stream-icon.svg": "/air-borne/static/media/stream-icon.3eb81281686c5136244778bdacc752c8.svg",
     "index.html": "/air-borne/index.html",
     "main.bd19e232.css.map": "/air-borne/static/css/main.bd19e232.css.map",
-    "main.eae71305.js.map": "/air-borne/static/js/main.eae71305.js.map",
+    "main.662064fd.js.map": "/air-borne/static/js/main.662064fd.js.map",
     "453.83310e2b.chunk.js.map": "/air-borne/static/js/453.83310e2b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bd19e232.css",
-    "static/js/main.eae71305.js"
+    "static/js/main.662064fd.js"
   ]
 }
