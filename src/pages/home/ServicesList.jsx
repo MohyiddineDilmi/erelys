@@ -39,11 +39,11 @@ const videoUrls = [
         <div className="services_list">
 
           <div className='srvice-card'>
-            <VideoPlayer title={"Cinematography and Videography"} description={"Airborne provides top-quality aerial cinematography and videography services for film, TV, marketing, and online content. We capture stunning footage and deliver a polished final product to meet your needs."} videoUrls={videoUrls} />
+            <VideoPlayer title={"Cinematography and Videography"} description={"SkyFrame provides top-quality aerial cinematography and videography services for film, TV, marketing, and online content. We capture stunning footage and deliver a polished final product to meet your needs."} videoUrls={videoUrls} />
           </div>
 
           <div className='srvice-card'>
-            <ImagePlayer title={"Aerial Photography"} description={"Airborne provides high-quality aerial photography services for a variety of purposes, including real estate, marketing, and events. The company's drones are equipped with high-resolution cameras that can capture stunning images from unique angles and perspectives."} images={imgUrls} duration={5}/>
+            <ImagePlayer title={"Aerial Photography"} description={"SkyFrame provides high-quality aerial photography services for a variety of purposes, including real estate, marketing, and events. The company's drones are equipped with high-resolution cameras that can capture stunning images from unique angles and perspectives."} images={imgUrls} duration={5}/>
           </div>
         </div>
 
