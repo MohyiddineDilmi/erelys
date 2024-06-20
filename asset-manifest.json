@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4a6f39dc.css",
-    "main.js": "/static/js/main.a3a61fcb.js",
+    "main.css": "/static/css/main.88d7ec15.css",
+    "main.js": "/static/js/main.26bab2e4.js",
     "static/js/453.83310e2b.chunk.js": "/static/js/453.83310e2b.chunk.js",
     "static/media/i-4.png": "/static/media/i-4.1cdc9ee5b3b5d269a1f9.png",
     "static/media/i-3.png": "/static/media/i-3.9d746070413f225b7207.png",
@@ -12,19 +12,20 @@
     "static/media/NCTTorin-Regular.ttf": "/static/media/NCTTorin-Regular.b5d158eefa20dabfeba7.ttf",
     "static/media/NCTTorin-Bold.ttf": "/static/media/NCTTorin-Bold.c3d1825820b7a94a8b76.ttf",
     "static/media/NCTTorin-ExtraBold.ttf": "/static/media/NCTTorin-ExtraBold.ab1733201c46ef8062ad.ttf",
-    "static/media/erelys_logo.svg": "/static/media/erelys_logo.ecde5cc3dacde65981d96ee6929a78e3.svg",
+    "static/media/erelys_logo.svg": "/static/media/erelys_logo.b01398119658420d8f5a8867691e7b34.svg",
     "static/media/fpv-icon.svg": "/static/media/fpv-icon.a3279994dd686310ecaaf1950b3bb7f4.svg",
     "static/media/drone-icon.svg": "/static/media/drone-icon.a322530d4fb68d52131f0383c47c5739.svg",
     "static/media/ai-icon.svg": "/static/media/ai-icon.5552d297b4731a83a657c2a80562d1a5.svg",
     "static/media/4k-icon.svg": "/static/media/4k-icon.57695d3ae4bae07f320261c5a627b12b.svg",
     "static/media/stream-icon.svg": "/static/media/stream-icon.3eb81281686c5136244778bdacc752c8.svg",
     "index.html": "/index.html",
-    "main.4a6f39dc.css.map": "/static/css/main.4a6f39dc.css.map",
-    "main.a3a61fcb.js.map": "/static/js/main.a3a61fcb.js.map",
+    "static/media/getFetch.cjs": "/static/media/getFetch.c4cca45e22bc1b2c7d0d.cjs",
+    "main.88d7ec15.css.map": "/static/css/main.88d7ec15.css.map",
+    "main.26bab2e4.js.map": "/static/js/main.26bab2e4.js.map",
     "453.83310e2b.chunk.js.map": "/static/js/453.83310e2b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a6f39dc.css",
-    "static/js/main.a3a61fcb.js"
+    "static/css/main.88d7ec15.css",
+    "static/js/main.26bab2e4.js"
   ]
 }
