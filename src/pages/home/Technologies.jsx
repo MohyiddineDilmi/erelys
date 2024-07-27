@@ -8,6 +8,11 @@ import IconDrone from '../../assets/icons/drone-icon.svg';
 import IconStream from '../../assets/icons/stream-icon.svg';
 import IconFpv from '../../assets/icons/fpv-icon.svg';
 import { useTranslation } from 'react-i18next';
+import GraphPaper from '../../components/GraphPaper';
+import { motion } from 'framer-motion';
+import imageUrl from '../../assets/drone_sketch.png';
+
+
 
 const technologies = [
   {
@@ -58,33 +63,27 @@ export default function Technologies() {
         <p className={styles.text}>{t('our_technologies_description')}</p>
       </div>
 
-      <div className="techs-conatiner">
-        <IconShape
-          color="#FF6F07"
-          title={t('high_resolution')}
-          myIcon={technologies[0].iconPath}
-          description={t('high_resolution_description')}
-        />
-        {/* <IconShape color="#FF6F07" title={technologies[1].title} myIcon={technologies[1].iconPath} description={technologies[1].description}/> */}
-        <IconShape
-          color="#00D1FF"
-          title={t('real_time_streaming')}
-          myIcon={technologies[2].iconPath}
-          description={t('real_time_streaming_description')}
-        />
-        <IconShape
-          color="#18FF04"
-          title={t('fpv')}
-          myIcon={technologies[3].iconPath}
-          description={t('fpv_description')}
-        />
-        <IconShape
-          color="#AD00FF"
-          title={t('ai_and_machine_learning')}
-          myIcon={technologies[4].iconPath}
-          description={t('ai_and_machine_learning_description')}
+
+      <div style={{ maxWidth: '1080px', margin: '0 auto', position: 'relative', height: '720px' }}>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}
+      >
+        <GraphPaper/>
+      </motion.div>
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <motion.img
+          src={imageUrl}
+          alt="Graph Image"
+          style={{ width: '100%', height: 'auto' }}
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 4, repeat: Infinity, repeatType: "mirror" }}
         />
       </div>
+    </div>
+  
     </div>
   );
 }
