@@ -33,7 +33,7 @@ const HorizontalLine = styled.div`
   left: 0;
   width: 0; /* Initially set width to 0 */
   height: 1px;
-  background-color: #141414;
+  background-color: #222;
   ${({ animate }) =>
     animate &&
     css`
@@ -48,7 +48,7 @@ const VerticalLine = styled.div`
   top: 0;
   width: 1px;
   height: 0; /* Initially set height to 0 */
-  background-color: #181818;
+  background-color: #222;
   ${({ animate }) =>
     animate &&
     css`
@@ -58,10 +58,20 @@ const VerticalLine = styled.div`
 `;
 
 const GraphPaperContainer = styled.div`
+  position: relative;
+  width: 100%;
+  padding-top: 72.25%; /* 16:9 Aspect Ratio */
   max-width: 1080px;
-  height: 60vh;
-  max-height: 60vh;
   background-color: transparent;
+  overflow: hidden;
+`;
+
+const GraphPaperContent = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 const GraphPaper = () => {
@@ -100,7 +110,9 @@ const GraphPaper = () => {
 
   return (
     <GraphPaperContainer ref={containerRef}>
-      <LineContainer>{lines}</LineContainer>
+      <GraphPaperContent>
+        <LineContainer>{lines}</LineContainer>
+      </GraphPaperContent>
     </GraphPaperContainer>
   );
 };
