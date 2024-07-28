@@ -193,7 +193,7 @@ const MapboxDirection = () => {
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 1 }}
       style={{
-        height: '100vh',
+        height: '30vh',
         maxHeight: '720px',
         width: '100%',
         maxWidth: '1080px',
