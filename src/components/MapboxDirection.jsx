@@ -14,7 +14,21 @@ const MapboxDirection = () => {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [travelTimes, setTravelTimes] = useState([]);
   const officeCoordinates = [-73.5574182, 45.501553]; // Coordinates for 428 Rue Saint-Pierre, Montréal
+
+  const getTravelTime = async (userCoordinates, mode) => {
+    const directionsRequest = `https://api.mapbox.com/directions/v5/mapbox/${mode}/${userCoordinates[0]},${userCoordinates[1]};${officeCoordinates[0]},${officeCoordinates[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+
+    const response = await fetch(directionsRequest);
+    const data = await response.json();
+    const duration = data.routes[0].duration; // Duration in seconds
+
+    return {
+      mode,
+      time: Math.round(duration / 60) // Convert duration to minutes
+    };
+  };
 
   useEffect(() => {
     if (map.current || !isVisible) return; // Initialize map only once and if the component is visible
@@ -60,12 +74,12 @@ const MapboxDirection = () => {
 
       // Attempt to get user's location
       navigator.geolocation.getCurrentPosition(
-        (position) => {
+        async (position) => {
           const userCoordinates = [position.coords.longitude, position.coords.latitude];
 
           // Add a marker for the user's location with a custom icon
           const userLocationIcon = document.createElement('div');
-          userLocationIcon.style.backgroundImage = `url(${StartIcon})`;// Path to your custom user icon
+          userLocationIcon.style.backgroundImage = `url(${StartIcon})`; // Path to your custom user icon
           userLocationIcon.style.width = '50px';
           userLocationIcon.style.height = '50px';
           userLocationIcon.style.backgroundSize = '100%';
@@ -74,43 +88,54 @@ const MapboxDirection = () => {
             .setLngLat(userCoordinates)
             .addTo(map.current);
 
-          // Use Mapbox Directions API to get the route
-          const directionsRequest = `https://api.mapbox.com/directions/v5/mapbox/driving/${userCoordinates[0]},${userCoordinates[1]};${officeCoordinates[0]},${officeCoordinates[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+          // Modes of transportation
+          const modes = ['driving-traffic', 'walking', 'cycling'];
 
-          fetch(directionsRequest)
-            .then(response => response.json())
-            .then(data => {
-              const route = data.routes[0].geometry;
+          // Get travel times for each mode
+          const travelTimesPromises = modes.map(mode => getTravelTime(userCoordinates, mode));
+          const travelTimesResults = await Promise.all(travelTimesPromises);
 
-              // Add the route to the map
-              map.current.addSource('route', {
-                type: 'geojson',
-                data: {
-                  type: 'Feature',
-                  properties: {},
-                  geometry: route,
-                }
-              });
+          // Sort travel times by the fastest
+          travelTimesResults.sort((a, b) => a.time - b.time);
+          setTravelTimes(travelTimesResults);
 
-              map.current.addLayer({
-                id: 'route',
-                type: 'line',
-                source: 'route',
-                layout: {
-                  'line-join': 'round',
-                  'line-cap': 'round'
-                },
-                paint: {
-                  'line-color': '#1DB954',
-                  'line-width': 5
-                }
-              });
+          // Use the first route (fastest driving-traffic route) to display on the map
+          const fastestRoute = travelTimesResults.find(t => t.mode === 'driving-traffic');
 
-              // Fit map to the route
-              const bounds = new mapboxgl.LngLatBounds();
-              route.coordinates.forEach(coord => bounds.extend(coord));
-              map.current.fitBounds(bounds, { padding: 50 });
-            });
+          const directionsRequest = `https://api.mapbox.com/directions/v5/mapbox/${fastestRoute.mode}/${userCoordinates[0]},${userCoordinates[1]};${officeCoordinates[0]},${officeCoordinates[1]}?geometries=geojson&access_token=${mapboxgl.accessToken}`;
+          
+          const response = await fetch(directionsRequest);
+          const data = await response.json();
+          const route = data.routes[0].geometry;
+
+          // Add the route to the map
+          map.current.addSource('route', {
+            type: 'geojson',
+            data: {
+              type: 'Feature',
+              properties: {},
+              geometry: route,
+            }
+          });
+
+          map.current.addLayer({
+            id: 'route',
+            type: 'line',
+            source: 'route',
+            layout: {
+              'line-join': 'round',
+              'line-cap': 'round'
+            },
+            paint: {
+              'line-color': '#1DB954',
+              'line-width': 5
+            }
+          });
+
+          // Fit map to the route
+          const bounds = new mapboxgl.LngLatBounds();
+          route.coordinates.forEach(coord => bounds.extend(coord));
+          map.current.fitBounds(bounds, { padding: 50 });
         },
         (error) => {
           // If user denies location access, just zoom in to the office location
@@ -149,6 +174,19 @@ const MapboxDirection = () => {
     return () => observer.disconnect();
   }, []);
 
+  const getModeLabel = (mode) => {
+    switch (mode) {
+      case 'driving-traffic':
+        return 'Driving';
+      case 'walking':
+        return 'Walking';
+      case 'cycling':
+        return 'Cycling';
+      default:
+        return mode;
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -156,11 +194,11 @@ const MapboxDirection = () => {
       transition={{ duration: 1 }}
       style={{
         height: '100vh',
-        maxHeight: '320px',
+        maxHeight: '720px',
         width: '100%',
         maxWidth: '1080px',
         margin: '0 auto',
-        borderRadius: '50px',
+        borderRadius: '20px',
         overflow: 'hidden',
         position: 'relative',
         marginBottom: '4rem',
@@ -174,6 +212,15 @@ const MapboxDirection = () => {
           backgroundColor: '000', // Adjust transparency here
         }} 
       />
+      {travelTimes.length > 0 && (
+        <div className="travel-time">
+          {travelTimes.map(({ mode, time }) => (
+            <div key={mode}>
+              {getModeLabel(mode)}: {time} minutes
+            </div>
+          ))}
+        </div>
+      )}
     </motion.div>
   );
 };
