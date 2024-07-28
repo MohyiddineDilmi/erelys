@@ -1,48 +1,38 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './technologies.css';
 import styles from '../../modules/styles.module.css';
-import IconShape from '../../components/IconShape';
-import Icon4k from '../../assets/icons/4k-icon.svg';
-import IconAi from '../../assets/icons/ai-icon.svg';
-import IconDrone from '../../assets/icons/drone-icon.svg';
-import IconStream from '../../assets/icons/stream-icon.svg';
-import IconFpv from '../../assets/icons/fpv-icon.svg';
 import { useTranslation } from 'react-i18next';
+import GraphPaper from '../../components/GraphPaper';
+import { motion } from 'framer-motion';
+import imageUrl from '../../assets/drone_sketch.png';
 
-const technologies = [
-  {
-    iconPath: `${Icon4k}`,
-    title: 'high_resolution',
-    description:
-      'We can capture stunning aerial footage that will help you showcase your business or project.',
-  },
-  {
-    iconPath: `${IconDrone}`,
-    title: 'High-speed',
-    description:
-      'high-speed drone technology, which can capture footage at high speeds for action shots, sports events, and more.',
-  },
-  {
-    iconPath: `${IconStream}`,
-    title: 'Real-time streaming',
-    description: 'you can join our flights and see the footages in real-time.',
-  },
-  {
-    iconPath: `${IconFpv}`,
-    title: 'FPV',
-    description:
-      'FPV technology allows for precise and immersive control of the drone.',
-  },
-  {
-    iconPath: `${IconAi}`,
-    title: 'AI and machine learning',
-    description:
-      'AI and machine learning algorithms for image and data analysis.',
-  },
-];
+// Custom hook for intersection observer
+const useIntersectionObserver = (options) => {
+  const [isIntersecting, setIntersecting] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIntersecting(entry.isIntersecting);
+    }, options);
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [ref, options]);
+
+  return [ref, isIntersecting];
+};
 
 export default function Technologies() {
   const { t } = useTranslation();
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.2 });
 
   return (
     <div
@@ -58,32 +48,30 @@ export default function Technologies() {
         <p className={styles.text}>{t('our_technologies_description')}</p>
       </div>
 
-      <div className="techs-conatiner">
-        <IconShape
-          color="#FF6F07"
-          title={t('high_resolution')}
-          myIcon={technologies[0].iconPath}
-          description={t('high_resolution_description')}
-        />
-        {/* <IconShape color="#FF6F07" title={technologies[1].title} myIcon={technologies[1].iconPath} description={technologies[1].description}/> */}
-        <IconShape
-          color="#00D1FF"
-          title={t('real_time_streaming')}
-          myIcon={technologies[2].iconPath}
-          description={t('real_time_streaming_description')}
-        />
-        <IconShape
-          color="#18FF04"
-          title={t('fpv')}
-          myIcon={technologies[3].iconPath}
-          description={t('fpv_description')}
-        />
-        <IconShape
-          color="#AD00FF"
-          title={t('ai_and_machine_learning')}
-          myIcon={technologies[4].iconPath}
-          description={t('ai_and_machine_learning_description')}
-        />
+      <div style={{ maxWidth: '1080px', margin: '0 auto', position: 'relative'}}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}
+        >
+          <GraphPaper />
+        </motion.div>
+        <div style={{ position: 'relative', zIndex: 1 }} ref={ref}>
+          {isIntersecting && (
+            <motion.img
+              src={imageUrl}
+              alt="Graph Image"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, y: [0, -20, 0] }}
+              transition={{
+                opacity: { duration: 2, delay: 0.5 },
+                y: { duration: 4, repeat: Infinity, repeatType: "mirror" }
+              }}
+              style={{ width: '100%', height: 'auto' }}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
