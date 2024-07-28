@@ -22,6 +22,15 @@
   object-fit: cover; /* Ensure the video covers the container */
 }
 
+.appBarFixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff; /* or any color you want */
+}
+
+
 /* Define styles for phones using media query */
 @media (max-width: 767px) {
   .videoStyle {

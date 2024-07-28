@@ -5,13 +5,18 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import 'intersection-observer'; // Import the polyfill if installed
 import ErelysIcon from '../assets/erelys_logo_only.png';
 import StartIcon from '../assets/start_point.png';
-import './MapboxDirection.css'; // Import the custom CSS file
+import './MapboxDirection.css'; // Import the custom CSS file\
+import { useTranslation } from 'react-i18next';
+
 
 
 // Set the Mapbox access token
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const MapboxDirection = () => {
+
+  const { t } = useTranslation();
+
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -66,11 +71,12 @@ const MapboxDirection = () => {
       new mapboxgl.Marker(officeLocationIcon)
         .setLngLat(officeCoordinates)
         .addTo(map.current);
+        
 
       // Add a popup with the office address
       new mapboxgl.Popup({ offset: 25 })
         .setLngLat(officeCoordinates)
-        .setHTML('<h3>Come visit us in Old Montreal</h3><p>101, 428 Rue Saint-Pierre, Montréal, QC H2Y 2M5</p>')
+        .setHTML(`<h3>${t('visit_us')}</h3><p>101, 428 Rue Saint-Pierre, Montréal, QC H2Y 2M5</p>`)
         .addTo(map.current);
 
       // Attempt to get user's location

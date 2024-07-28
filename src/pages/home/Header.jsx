@@ -10,7 +10,7 @@ const headerStyles = {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: '4rem',
+    paddingTop: '8rem',
   },
   animatedText: {
     maxWidth: '1080px',
