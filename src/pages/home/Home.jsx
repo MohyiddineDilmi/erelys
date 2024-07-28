@@ -5,6 +5,7 @@ import './home.css';
 import Services from './Services';
 import Footer from '../../components/Footer';
 import Technologies from './Technologies';
+import MapboxDirection from '../../components/MapboxDirection'
 import {
   motion,
   useMotionTemplate,
@@ -77,6 +78,7 @@ function Home() {
           </div>
           <Services />
           <Technologies />
+          <MapboxDirection/>
           <Footer />
         </motion.div>
       </div>
