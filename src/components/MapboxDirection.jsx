@@ -7,8 +7,9 @@ import ErelysIcon from '../assets/erelys_logo_only.png';
 import StartIcon from '../assets/start_point.png';
 import './MapboxDirection.css'; // Import the custom CSS file
 
-// Replace with your Mapbox access token
-mapboxgl.accessToken = 'pk.eyJ1IjoiZGlsbWkiLCJhIjoiY2x5aHRxdngwMDZpNDJrcTBqNzBvN3d2eiJ9.9qS5FeWGyfhV8qZwZQsE6g';
+
+// Set the Mapbox access token
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 const MapboxDirection = () => {
   const mapContainer = useRef(null);
@@ -193,7 +194,7 @@ const MapboxDirection = () => {
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 1 }}
       style={{
-        height: '30vh',
+        height: '40vh',
         maxHeight: '720px',
         width: '100%',
         maxWidth: '1080px',
