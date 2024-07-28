@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.531d192f.css",
-    "main.js": "/static/js/main.d0f6bb1e.js",
+    "main.css": "/static/css/main.428a09b5.css",
+    "main.js": "/static/js/main.59fee35a.js",
     "static/js/453.83310e2b.chunk.js": "/static/js/453.83310e2b.chunk.js",
     "static/media/i-3.png": "/static/media/i-3.9d746070413f225b7207.png",
     "static/media/i-6.jpg": "/static/media/i-6.7ef468561dd2d4f77911.jpg",
@@ -15,12 +15,12 @@
     "static/media/erelys_logo.svg": "/static/media/erelys_logo.ecde5cc3dacde65981d96ee6929a78e3.svg",
     "index.html": "/index.html",
     "static/media/getFetch.cjs": "/static/media/getFetch.c4cca45e22bc1b2c7d0d.cjs",
-    "main.531d192f.css.map": "/static/css/main.531d192f.css.map",
-    "main.d0f6bb1e.js.map": "/static/js/main.d0f6bb1e.js.map",
+    "main.428a09b5.css.map": "/static/css/main.428a09b5.css.map",
+    "main.59fee35a.js.map": "/static/js/main.59fee35a.js.map",
     "453.83310e2b.chunk.js.map": "/static/js/453.83310e2b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.531d192f.css",
-    "static/js/main.d0f6bb1e.js"
+    "static/css/main.428a09b5.css",
+    "static/js/main.59fee35a.js"
   ]
 }
