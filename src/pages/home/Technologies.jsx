@@ -8,12 +8,14 @@ import imageUrl from '../../assets/drone_sketch.png';
 
 // Custom hook for intersection observer
 const useIntersectionObserver = (options) => {
-  const [isIntersecting, setIntersecting] = useState(false);
+  const [hasIntersected, setHasIntersected] = useState(false);
   const ref = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      setIntersecting(entry.isIntersecting);
+      if (entry.isIntersecting) {
+        setHasIntersected(true);
+      }
     }, options);
 
     if (ref.current) {
@@ -27,12 +29,12 @@ const useIntersectionObserver = (options) => {
     };
   }, [ref, options]);
 
-  return [ref, isIntersecting];
+  return [ref, hasIntersected];
 };
 
 export default function Technologies() {
   const { t } = useTranslation();
-  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.2 });
+  const [ref, hasIntersected] = useIntersectionObserver({ threshold: 0.2 });
 
   return (
     <div
@@ -48,7 +50,7 @@ export default function Technologies() {
         <p className={styles.text}>{t('our_technologies_description')}</p>
       </div>
 
-      <div style={{ maxWidth: '1080px', margin: '0 auto', position: 'relative'}}>
+      <div style={{ maxWidth: '1080px', margin: '0 auto', position: 'relative' }}>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -58,7 +60,7 @@ export default function Technologies() {
           <GraphPaper />
         </motion.div>
         <div style={{ position: 'relative', zIndex: 1 }} ref={ref}>
-          {isIntersecting && (
+          {hasIntersected && (
             <motion.img
               src={imageUrl}
               alt="Graph Image"

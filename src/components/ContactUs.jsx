@@ -57,7 +57,7 @@ function ContactUs() {
         <button onClick={handleButtonClick} style={buttonStyle}>
           <FontAwesomeIcon icon={logo} style={iconStyle} />
         </button>
-        <p className={styles.text_no_margin}>Montreal, QC</p>
+        <p className={styles.text_no_margin}>514 665-7867</p>
       </div>
 
       <div className="social-media-container" style={socialMediaStyle}>
