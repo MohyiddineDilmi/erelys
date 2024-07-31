@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.8365bb6a.css",
-    "main.js": "/static/js/main.edf573d7.js",
+    "main.css": "/static/css/main.7b43c852.css",
+    "main.js": "/static/js/main.f359e8d3.js",
     "static/js/453.83310e2b.chunk.js": "/static/js/453.83310e2b.chunk.js",
     "static/media/i-3.png": "/static/media/i-3.9d746070413f225b7207.png",
     "static/media/i-6.jpg": "/static/media/i-6.7ef468561dd2d4f77911.jpg",
@@ -12,15 +12,15 @@
     "static/media/NCTTorin-Regular.ttf": "/static/media/NCTTorin-Regular.b5d158eefa20dabfeba7.ttf",
     "static/media/NCTTorin-Bold.ttf": "/static/media/NCTTorin-Bold.c3d1825820b7a94a8b76.ttf",
     "static/media/NCTTorin-ExtraBold.ttf": "/static/media/NCTTorin-ExtraBold.ab1733201c46ef8062ad.ttf",
-    "static/media/erelys_logo.svg": "/static/media/erelys_logo.ecde5cc3dacde65981d96ee6929a78e3.svg",
+    "static/media/erelys_logo.svg": "/static/media/erelys_logo.b01398119658420d8f5a8867691e7b34.svg",
     "index.html": "/index.html",
     "static/media/getFetch.cjs": "/static/media/getFetch.c4cca45e22bc1b2c7d0d.cjs",
-    "main.8365bb6a.css.map": "/static/css/main.8365bb6a.css.map",
-    "main.edf573d7.js.map": "/static/js/main.edf573d7.js.map",
+    "main.7b43c852.css.map": "/static/css/main.7b43c852.css.map",
+    "main.f359e8d3.js.map": "/static/js/main.f359e8d3.js.map",
     "453.83310e2b.chunk.js.map": "/static/js/453.83310e2b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8365bb6a.css",
-    "static/js/main.edf573d7.js"
+    "static/css/main.7b43c852.css",
+    "static/js/main.f359e8d3.js"
   ]
 }
