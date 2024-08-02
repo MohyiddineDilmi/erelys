@@ -77,7 +77,7 @@ function ContactUs() {
           </button> */}
         <button
           style={buttonStyle}
-          onClick={() => window.open('YOUR_DISCORD_LINK')}
+          onClick={() => window.open('https://www.linkedin.com/company/flyerelys')}
         >
           <FontAwesomeIcon icon={faLinkedin} style={iconStyle} />
         </button>
